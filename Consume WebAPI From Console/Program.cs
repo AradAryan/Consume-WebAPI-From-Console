@@ -19,13 +19,11 @@ namespace Consume_WebAPI_From_Console
         {
             var message = client.GetStringAsync("get");
             Console.WriteLine(message.Result);
-            File.AppendAllText(@"C:\Users\faranam\Desktop\Context.txt", message.Result);
         }
         public static void Get(string word)
         {
             var message = client.GetStringAsync($"get?value={word}");
             Console.WriteLine(message.Result);
-            File.AppendAllText(@"C:\Users\faranam\Desktop\Context.txt", message.Result);
         }
         public static void Post(string word, string meaning)
         {
@@ -41,7 +39,6 @@ namespace Consume_WebAPI_From_Console
         }
         static void Main(string[] args)
         {
-            File.WriteAllText(@"C:\Users\faranam\Desktop\Context.txt", "");
             client.BaseAddress = new Uri("http://localhost:51158/api/values/");
 
             Get();
@@ -51,6 +48,7 @@ namespace Consume_WebAPI_From_Console
             Get("Arad");
             Delete("Arad");
             Get("Arad");
+
             Console.WriteLine("Finish");
             Console.ReadKey();
         }
